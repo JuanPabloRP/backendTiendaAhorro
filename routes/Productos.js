@@ -23,7 +23,7 @@ router.get("/buscarProductos", (req, res) => {
   });
 });
 
-/////////////////////////                 ARREGLAR                ////////////////////////////
+/////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
 router.put('/editarProductos/:id', (req, res) => {
   const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
   const { ID_Producto } = req.params;
@@ -35,7 +35,7 @@ router.put('/editarProductos/:id', (req, res) => {
     }
   });
 });
-/////////////////////////                 ARREGLAR                ////////////////////////////
+/////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
 
 
 module.exports = router;

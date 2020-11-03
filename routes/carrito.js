@@ -15,11 +15,11 @@ router.get('/carrito', (req, res) => {
 
 
 router.delete('/eliminarCarrito/:id', (req, res) => {
-  const { id } = req.params;
-  mysqlConnection.query('DELETE FROM Carrito WHERE id = ?',
-   [id], (err, rows, fields) => {
+  const {ID_Carrito} = req.params;
+  mysqlConnection.query('DELETE FROM Carrito WHERE ID_Carrito =  ?',
+   [ID_Carrito], (err, rows, fields) => {
     if(!err) {
-      res.json({status: 'Productos del carrito han sido eliminados!'});
+      res.json({status: 'Producto del carrito ha sido eliminado'});
     } else {
       console.log(err);
     }
