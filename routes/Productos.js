@@ -3,7 +3,7 @@ const router = express.Router();
 const mysqlConnection = require("../db/db");
 
 
-router.get("/home", (req, res) => {
+router.get("/Productos", (req, res) => {
   mysqlConnection.query("SELECT * FROM Productos ", (err, rows, fields) => {
     if (!err) {
       res.json(rows);
@@ -12,6 +12,36 @@ router.get("/home", (req, res) => {
     }
   });
 });
+
+
+router.post("/productoNuevo", (req, res) => {
+  const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
+  mysqlConnection.query(
+    `INSERT INTO Productos(Productos.Nombre,Productos.Precio,Productos.Descripcion,Productos.Disponibilidad,Productos.Cantidad,Productos.Imagen) VALUES ('${Nombre}','${Precio}','${Descripcion}','${Disponibilidad}', '${Cantidad}','${Imagen}');`,
+    (err, rows, fields) => {
+      if (!err) {
+        res.json("Producto nuevo agregado");
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+
+router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
+  const {ID_Producto} = req.params;
+  mysqlConnection.query(`DELETE FROM Productos WHERE ID_Productos = ?`,
+   [ID_Producto], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Producto  eliminado!'});
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+
+//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
 
 router.get("/buscarProductos", (req, res) => {
  let {buscaProd}=req.query
@@ -23,6 +53,8 @@ router.get("/buscarProductos", (req, res) => {
     }
   });
 });
+//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
+
 
 
 /////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
@@ -43,3 +75,6 @@ router.put("/editarProductos/:ID_Producto", (req, res) => {
 /////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
 
 module.exports = router;
+
+
+
