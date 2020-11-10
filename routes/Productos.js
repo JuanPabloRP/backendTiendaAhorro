@@ -28,24 +28,27 @@ router.post("/productoNuevo", (req, res) => {
   );
 });
 
+//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
+
 router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
   const {ID_Producto} = req.params;
   mysqlConnection.query(`DELETE FROM Productos WHERE ID_Productos = ?`,
    [ID_Producto], (err, rows, fields) => {
     if(!err) {
-      res.json({status: 'Producto  eliminado!'});
+      res.json({status: '¡Producto  eliminado!'});
     } else {
       console.log(err);
     }
   });
 });
+//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
 
 
 //////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
 
 router.get("/buscarProductos", (req, res) => {
  let {buscaProd}=req.query
-  mysqlConnection.query(`SELECT * FROM Productos WHERE Productos LIKE '${buscaProd}%'`, (err, rows, fields) => {
+  mysqlConnection.query(`SELECT * FROM Productos WHERE Productos LIKE '%${buscaProd}%'`, (err, rows, fields) => {
     if (!err) {
       res.json(rows);
     } else {
