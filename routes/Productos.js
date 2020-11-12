@@ -28,7 +28,7 @@ router.post("/productoNuevo", (req, res) => {
   );
 });
 
-//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
+//////////// hecho pero falta algo   ///////////////////////////
 
 router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
   const {ID_Producto} = req.params;
@@ -41,10 +41,10 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
     }
   });
 });
-//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
+//////////// hecho pero falta algo   ///////////////////////////
 
 
-//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
+//////////// hecho pero falta algo   ///////////////////////////
 
 router.get("/buscarProductos", (req, res) => {
  let {buscaProd}=req.query
@@ -56,7 +56,7 @@ router.get("/buscarProductos", (req, res) => {
     }
   });
 });
-//////////// hecho pero falta algo (proxima clase con Dubenis)  ///////////////////////////
+//////////// hecho pero falta algo   ///////////////////////////
 
 
 
