@@ -28,11 +28,26 @@ router.post("/productoNuevo", (req, res) => {
   );
 });
 
+
+
+router.get("/buscarProductos", (req, res) => {
+ let {buscaProd}=req.query
+  mysqlConnection.query(`SELECT * FROM Productos WHERE Nombre LIKE `%buscaProd%` `, (err, rows, fields) => {
+    if (!err) {
+      res.json(rows);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+
+
 //////////// hecho pero falta algo   ///////////////////////////
 
 router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
   const {ID_Producto} = req.params;
-  mysqlConnection.query(`DELETE FROM Productos WHERE ID_Productos = ?`,
+  mysqlConnection.query(`DELETE FROM Productos WHERE ID_Producto = ?`,
    [ID_Producto], (err, rows, fields) => {
     if(!err) {
       res.json({status: '¡Producto  eliminado!'});
@@ -42,23 +57,6 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
   });
 });
 //////////// hecho pero falta algo   ///////////////////////////
-
-
-//////////// hecho pero falta algo   ///////////////////////////
-
-router.get("/buscarProductos", (req, res) => {
- let {buscaProd}=req.query
-  mysqlConnection.query(`SELECT * FROM Productos WHERE Productos LIKE '%${buscaProd}%'`, (err, rows, fields) => {
-    if (!err) {
-      res.json(rows);
-    } else {
-      console.log(err);
-    }
-  });
-});
-//////////// hecho pero falta algo   ///////////////////////////
-
-
 
 /////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
 router.put("/editarProductos/:ID_Producto", (req, res) => {

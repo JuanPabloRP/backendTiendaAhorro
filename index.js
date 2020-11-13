@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use('/api',registroUsuario);
 app.use('/api',carrito);
-app.use('/api',productos);
+app.use('/api', productos);
 app.use('/api',perfil);
 
 // Ajustes del servidor

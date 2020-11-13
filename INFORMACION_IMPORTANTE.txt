@@ -1,0 +1,31 @@
+///////////////////////////////////////////
+Asi esta la base de datos y el backend
+ID
+correo
+nombre
+contraseña
+vinculación
+///////////////////////////////////////////
+
+
+
+FRONTEND
+
+----------------------------------------------------
+Registrar (Tendero)
+
+
+Eliminar: apellido, nombre local, direccion 
+
+Organizar datos:Arriba email, despues nombre y contraseña 
+----------------------------------------------------
+
+......................................................
+Registrar (cliente)
+
+
+Eliminar: apellido
+
+Organizar datos:Arriba email, despues nombre y contraseña 
+......................................................
+
