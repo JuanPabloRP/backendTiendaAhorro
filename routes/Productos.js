@@ -54,7 +54,7 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
 });
 
 
-
+///////////////////////////  error /////////////////////////
 
 router.put("/editarProductos/:ID_Producto", (req, res) => {
   const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
@@ -71,6 +71,7 @@ router.put("/editarProductos/:ID_Producto", (req, res) => {
   );
 });
 
+///////////////////////////  error /////////////////////////
 
 module.exports = router;
 

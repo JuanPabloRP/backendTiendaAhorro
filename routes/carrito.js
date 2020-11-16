@@ -3,6 +3,8 @@ const router = express.Router();
 
 const mysqlConnection  = require('../db/db');
 
+
+
 router.get('/carrito', (req, res) => {     
   mysqlConnection.query('SELECT * FROM Carrito', (err, rows, fields) => {
       if (!err) {
@@ -14,7 +16,7 @@ router.get('/carrito', (req, res) => {
   });
 
 
-router.delete('/eliminarCarrito/:id', (req, res) => {
+router.delete('/eliminarCarrito/:ID_Carrito', (req, res) => {
   const {ID_Carrito} = req.params;
   mysqlConnection.query('DELETE FROM Carrito WHERE ID_Carrito =  ?',
    [ID_Carrito], (err, rows, fields) => {

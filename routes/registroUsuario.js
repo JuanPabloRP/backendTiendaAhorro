@@ -23,13 +23,27 @@ router.delete('/eliminarRegistro/:ID_Usuario', (req, res) => {
   mysqlConnection.query('DELETE FROM Registro WHERE ID_Usuario = ?',
    [ID_Usuario], (err, rows, fields) => {
     if(!err) {
-      res.json({status: 'Perfil eliminado!'});
+      res.json({status: 'El perfil ha sido eliminado!'});
     } else {
       console.log(err);
     }
   });
 });
 
-
+//////////////////////////  No funciona ///////////////////////////////////
+router.post("/login", (req, res) => {
+  const { CorreoElectronico, Contraseña } = req.body;
+  mysqlConnection.query(
+    `INSERT INTO Registro(Registro.CorreoElectronico,Registro.Contraseña) VALUES ('${CorreoElectronico}','${Contraseña}');`,
+    (err, rows, fields) => {
+      if (!err) {
+        res.json("Has ingresado sesión");
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+//////////////////////////  No funciona ///////////////////////////////////
 
 module.exports = router;
