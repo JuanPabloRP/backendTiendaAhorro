@@ -14,6 +14,18 @@ router.get("/Productos", (req, res) => {
 });
 
 
+router.get("/buscarProductos", (req, res) => {
+  let {buscaProd}=req.query
+   mysqlConnection.query(`SELECT * FROM Productos WHERE Nombre LIKE `%buscaProd%` `, (err, rows, fields) => {
+     if (!err) {
+       res.json(rows);
+     } else {
+       console.log(err);
+     }
+   });
+ });
+
+
 router.post("/productoNuevo", (req, res) => {
   const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
   mysqlConnection.query(
@@ -29,22 +41,6 @@ router.post("/productoNuevo", (req, res) => {
 });
 
 
-
-router.get("/buscarProductos", (req, res) => {
- let {buscaProd}=req.query
-  mysqlConnection.query(`SELECT * FROM Productos WHERE Nombre LIKE `%buscaProd%` `, (err, rows, fields) => {
-    if (!err) {
-      res.json(rows);
-    } else {
-      console.log(err);
-    }
-  });
-});
-
-
-
-//////////// hecho pero falta algo   ///////////////////////////
-
 router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
   const {ID_Producto} = req.params;
   mysqlConnection.query(`DELETE FROM Productos WHERE ID_Producto = ?`,
@@ -56,9 +52,10 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
     }
   });
 });
-//////////// hecho pero falta algo   ///////////////////////////
 
-/////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
+
+
+
 router.put("/editarProductos/:ID_Producto", (req, res) => {
   const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
   const {ID_Producto} = req.params;
@@ -73,7 +70,7 @@ router.put("/editarProductos/:ID_Producto", (req, res) => {
     }
   );
 });
-/////////////////////////             HECHO PERO PRESENTA FALLO          ////////////////////////////
+
 
 module.exports = router;
 
