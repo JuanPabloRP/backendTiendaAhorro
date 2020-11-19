@@ -54,24 +54,20 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
 });
 
 
-///////////////////////////  error /////////////////////////
 
-router.put("/editarProductos/:ID_Producto", (req, res) => {
+router.put('/editarProductos/:ID_Usuario', (req, res) => {
   const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
-  const {ID_Producto} = req.params;
-  mysqlConnection.query(
-    `UPDATE Productos SET Nombre='${Nombre}',Productos.Precio='${Precio}',Productos.Descripcion= '${Descripcion}',Productos.Disponibilidad='${Disponibilidad}',Productos.Cantidad'${Cantidad}',Productos.Imagen='${Imagen}' where ID_Producto=${ID_Producto}`,
-    (err, rows, fields) => {
-      if (!err) {
-        res.json({ status: "Producto actualizado" });
-      } else {
-        console.log(err);
-      }
+  const { ID_Usuario } = req.params;
+  mysqlConnection.query(`UPDATE Productos SET Nombre=?,Productos.Precio=?,Productos.Descripcion= ?,Productos.Disponibilidad=?,Productos.Cantidad=?,Productos.Imagen=? where ID_Producto=?`, 
+  [Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen, ID_Usuario], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Producto actualizado'});
+    } else {
+      console.log(err);
     }
-  );
+  });
 });
 
-///////////////////////////  error /////////////////////////
 
 module.exports = router;
 
