@@ -4,9 +4,9 @@ const mysqlConnection = require("../db/db");
 
 
 router.post("/registroUsuario", (req, res) => {
-  const {CorreoElectronico,Nombre,Contraseña} = req.body;
+  const {CorreoElectronico,Nombre,Contrasena} = req.body;
   mysqlConnection.query(
-    `INSERT INTO Registro(Registro.CorreoElectronico,Registro.Nombre,Registro.Contraseña) VALUES ('${CorreoElectronico}' , '${Nombre}','${Contraseña}');`,
+    `INSERT INTO Registro(Registro.CorreoElectronico,Registro.Nombre,Registro.Contrasena) VALUES ('${CorreoElectronico}' , '${Nombre}','${Contrasena}');`,
     (err, rows, fields) => {
       if (!err) {
         res.json("Registrado");
@@ -19,9 +19,9 @@ router.post("/registroUsuario", (req, res) => {
 
 
 router.post('/login',(req,res)=>{
-  const {CorreoElectronico,Contraseña}=req.body;
-  console.log(CorreoElectronico,Contraseña)
-  mysqlConnection.query(`SELECT * FROM Registro WHERE CorreoElectronico='${CorreoElectronico}' AND contraseña='${Contraseña}'`,(err,rows,fields)=>{
+  const {CorreoElectronico,Contrasena}=req.body;
+  console.log(CorreoElectronico,Contrasena)
+  mysqlConnection.query(`SELECT * FROM Registro WHERE CorreoElectronico='${CorreoElectronico}' AND contrasena='${Contrasena}'`,(err,rows,fields)=>{
     if (err) {
       res.json({ message:`Error`});
       return console.log(err.message);

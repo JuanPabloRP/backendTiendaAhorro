@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const registroUsuario= require('./routes/registroUsuario');
 const carrito = require('./routes/carrito');
 const productos = require('./routes/Productos');
@@ -8,26 +9,35 @@ const historialPedidos = require('./routes/historialPedidos');
 
 
 
+app.use(cors({origin: '*'})); 
+//app.use(cors({origin: 'https://kuepj-3000.sse.codesandbox.io'}));
 
-// Ajustes
-app.set('port',3001);
-
-// Middlewares
 app.use(express.json());
 
-// Routes//
 
+
+// Routes//
 app.use('/api',registroUsuario);
 app.use('/api',carrito);
 app.use('/api',productos);
 app.use('/api',perfil);
-app.use('/api',historialPedidos)
+app.use('/api',historialPedidos);
 
-// Ajustes del servidor
-app.listen(app.get('port'), () => {
-  console.log(`Servidor corriendo en el puerto ${app.get('port')}`);
+
+let port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+  console.log(`Corriendo en puerto: ${port}`);
 });
 
 
 
 
+
+
+
+app.use('/api',registroUsuario);
+app.use('/api',carrito);
+app.use('/api',productos);
+app.use('/api',perfil);
+app.use('/api',historialPedidos);
