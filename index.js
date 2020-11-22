@@ -8,9 +8,9 @@ const perfil = require('./routes/perfil');
 const historialPedidos = require('./routes/historialPedidos');
 
 
+//cors
+app.use(cors({origin: 'https://equipo1demppi2020-3.juanpablopab115.repl.co/'})); 
 
-app.use(cors({origin: '*'})); 
-//app.use(cors({origin: 'https://kuepj-3000.sse.codesandbox.io'}));
 
 app.use(express.json());
 
