@@ -55,11 +55,11 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
 
 
 
-router.put('/editarProductos/:ID_Usuario', (req, res) => {
+router.put('/editarProductos/:ID_Producto', (req, res) => {
   const {Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen} = req.body;
-  const { ID_Usuario } = req.params;
+  const { ID_Producto } = req.params;
   mysqlConnection.query(`UPDATE Productos SET Nombre=?,Productos.Precio=?,Productos.Descripcion= ?,Productos.Disponibilidad=?,Productos.Cantidad=?,Productos.Imagen=? where ID_Producto=?`, 
-  [Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen, ID_Usuario], (err, rows, fields) => {
+  [Nombre,Precio,Descripcion,Disponibilidad,Cantidad,Imagen, ID_Producto], (err, rows, fields) => {
     if(!err) {
       res.json({status: 'Producto actualizado'});
     } else {

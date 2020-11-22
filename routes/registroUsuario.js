@@ -48,5 +48,17 @@ router.delete('/eliminarRegistro/:ID_Usuario', (req, res) => {
 });
 
 
+router.put('/cambiarContrasena/:ID_Usuario', (req, res) => {
+  const {Contrasena} = req.body;
+  const { ID_Usuario } = req.params;
+  mysqlConnection.query(`UPDATE Registro SET Contrasena=? where ID_Usuario=?`, 
+  [Contrasena, ID_Usuario], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Contraseña actualizada'});
+    } else {
+      console.log(err);
+    }
+  });
+});
 
 module.exports = router;
