@@ -32,12 +32,3 @@ app.listen(port, () => {
 
 
 
-
-
-
-
-app.use('/api',registroUsuario);
-app.use('/api',carrito);
-app.use('/api',productos);
-app.use('/api',perfil);
-app.use('/api',historialPedidos);
