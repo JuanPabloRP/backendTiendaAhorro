@@ -9,7 +9,7 @@ const historialPedidos = require('./routes/historialPedidos');
 
 
 //cors
-app.use(cors({origin: 'https://equipo1demppi2020-3.juanpablopab115.repl.co/'})); 
+app.use(cors({origin: '*'})); 
 
 
 app.use(express.json());
