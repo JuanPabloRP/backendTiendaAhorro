@@ -4,7 +4,6 @@ const router = express.Router();
 const mysqlConnection  = require('../db/db');
 
 
-
 router.get('/carrito', (req, res) => {     
   mysqlConnection.query('SELECT * FROM Carrito', (err, rows, fields) => {
       if (!err) {

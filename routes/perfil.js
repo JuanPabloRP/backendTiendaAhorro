@@ -4,7 +4,7 @@ const mysqlConnection = require("../db/db");
 
 router.get("/perfil", (req, res) => {
   mysqlConnection.query(
-    "SELECT Vinculacion, Nombre, Barrio, Direccion FROM `Perfil`  ",
+    "SELECT Nombre, Barrio, Direccion FROM `Perfil`  ",
     (err, rows, fields) => {
       if (!err) {
         res.json(rows);
@@ -46,20 +46,5 @@ router.put("/perfil/:ID_Perfil", (req, res) => {
   );
 });
 
-//////////////////////////  Sin funcionamiento  ///////////////////////////////////
-router.post("/login", (req, res) => {
-  const { CorreoElectronico, Contraseña } = req.body;
-  mysqlConnection.query(
-    `INSERT INTO Registro(Registro.CorreoElectronico,Registro.Contraseña) VALUES ('${CorreoElectronico}','${Contraseña}');`,
-    (err, rows, fields) => {
-      if (!err) {
-        res.json("Has ingresado sesión");
-      } else {
-        console.log(err);
-      }
-    }
-  );
-});
-//////////////////////////  Sin funcionamiento ///////////////////////////////////
 
 module.exports = router;
