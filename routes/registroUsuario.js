@@ -3,7 +3,7 @@ const router = express.Router();
 const mysqlConnection = require("../db/db");
 
 router.post("/registroUsuario", (req, res) => {
-  const { CorreoElectronico, Nombre, Contrasena } = req.body;
+  const {CorreoElectronico, Nombre, Contrasena } = req.body;
   mysqlConnection.query(
     `INSERT INTO Registro(Registro.CorreoElectronico,Registro.Nombre,Registro.Contrasena) VALUES ('${CorreoElectronico}' , '${Nombre}','${Contrasena}');`,
     (err, rows, fields) => {
