@@ -49,7 +49,7 @@ router.delete('/eliminarProducto/:ID_Producto', (req, res) => {
       res.json({status: '¡Producto  eliminado!'});
     } else {
       console.log(err);
-    }
+    } 
   });
 });
 
